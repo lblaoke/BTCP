@@ -1,0 +1,43 @@
+#dataset configuration
+dataset:
+    name: FashionMnistDataset
+    path: /home/gengyu/datasets/fashion-mnist/
+    shape: [1,28,28]
+    num_class: 10
+    task_classifier: multi-classification
+    task_confidnet: binary-classification
+    OOD:
+        name: MnistDataset
+        path: /home/gengyu/datasets/mnist/
+
+#training configuration
+training:
+    batch_size: 32
+    classifier_epoch: 70
+    confidnet_epoch: 70
+    finetuning_epoch: 7
+    num_worker: 0
+    drop_last: True
+    loss_classifier: CrossEntropyLoss
+    loss_confidnet: MSELoss
+    optimizer:
+        name: SGD
+        lr: 0.001
+        lr_finetuning: 0.0001
+        momentum: 0.9
+        weight_decay: 0.0001
+
+#evaluation configuration
+evaluation:
+    batch_size: 1024
+    num_worker: 0
+    drop_last: False
+    metrics: ['accuracy','balanced_accuracy','AUROC','ECE','FPR']
+
+#model configuration
+model:
+    name: ConvNetMNIST
+    path: models/
+    transfered:
+    num_feature: 128
+    parallel: False

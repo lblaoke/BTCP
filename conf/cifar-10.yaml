@@ -1,0 +1,43 @@
+#dataset configuration
+dataset:
+    name: Cifar10Dataset
+    path: /home/gengyu/datasets/cifar-10/
+    shape: [3,32,32]
+    num_class: 10
+    task_classifier: multi-classification
+    task_confidnet: binary-classification
+    OOD:
+        name: Svhn2Dataset
+        path: /home/gengyu/datasets/svhn-format2/
+
+#training configuration
+training:
+    batch_size: 64
+    classifier_epoch: 15
+    confidnet_epoch: 150
+    finetuning_epoch: 15
+    num_worker: 0
+    drop_last: True
+    loss_classifier: CrossEntropyLoss
+    loss_confidnet: MSELoss
+    optimizer:
+        name: SGD
+        lr: 0.001
+        lr_finetuning: 0.0001
+        momentum: 0.9
+        weight_decay: 0.0005
+
+#evaluation configuration
+evaluation:
+    batch_size: 512
+    num_worker: 0
+    drop_last: False
+    metrics: ['accuracy','balanced_accuracy','AUROC','ECE','FPR']
+
+#model configuration
+model:
+    name: VGG16
+    path: models/
+    transfered: /home/gengyu/datasets/models/vgg16_bn-6c64b313.pth
+    num_feature: 256
+    parallel: False
