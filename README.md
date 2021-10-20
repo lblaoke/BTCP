@@ -1,5 +1,5 @@
 # balanced-TCP
-This project is an experimental implementation of the paper "Balance Calibration for Identifying Incorrect Classifications with Distinguishable Uncertainty" (under review in ACML 2021).
+This project is an experimental implementation of the paper "Balance Calibration for Identifying Incorrect Classifications with Distinguishable Uncertainty" (under review in AISTATS 2022).
 
 ![avatar](balanced-TCP.png)
 
